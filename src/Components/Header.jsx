@@ -5,7 +5,7 @@ import logo from '../assets/logo.png'
 const Header = (props) => {
   const navigate = useNavigate();
   return (
-    <Container>
+    <StyledHeader className="flex- a-center j-between">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
@@ -14,13 +14,13 @@ const Header = (props) => {
         {props.login ? "Log In" : "Sign In"}
       </button>
 
-    </Container>
+    </StyledHeader>
   )
 }
 
 export default Header;
 
-const Container = styled.div`
+const StyledHeader = styled.header`
 padding: 0 4rem;
 .logo {
     img {
