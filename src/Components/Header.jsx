@@ -5,7 +5,7 @@ import logo from '../assets/logo.png'
 const Header = (props) => {
   const navigate = useNavigate();
   return (
-    <StyledHeader className="flex- a-center j-between">
+    <StyledHeader className="flex a-center j-between">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>

@@ -1,9 +1,11 @@
 import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components';
 import BackgroundImage from '../Components/BackgroundImage';
 import Header from '../Components/Header';
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState();
   return (
     <Container>
         <BackgroundImage />
@@ -23,12 +25,21 @@ const Signup = () => {
               type="email"
               placeholder="Email address"
               name="email" />
-              <input type="password"
+              {showPassword && (
+                <input 
+                  type="password"
+                  placeholder="Password"
+                  name="password" />
+              )}
+              {/* <input type="password"
               placeholder="Password"
-              name="password" />
-              <button>Get Started</button>
+              name="password" /> */}
+              {!showPassword &&  (
+                <button onClick={() => setShowPassword(true)}>Get Started</button>
+              )}
+              
             </div>
-            <button>Login</button>
+            <button>Signup</button>
         </div>
         </div>
     </Container>
@@ -50,6 +61,56 @@ position: relative;
   width: 100vw;
   display: grid;
   grid-template-rows: 15vh 84vh;
+  .body {
+    gap: 1rem;
+    .text {
+      gap: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      h1 {
+        padding: 0 25rem;
+      }
+    }
+    .form {
+      display: grid;
+      grid-template-columns: ${({ showPassword }) => 
+       showPassword ? "1fr 1fr" : "2fr 1fr"};
+      width: 60%;
+        input {
+          color: black;
+          border: none;
+          padding: 1.5rem;
+          font-size: 1.2rem;
+          border: 1px solid black;
+          &:focus {
+            outline: none;
+          }
+        }
+        button {
+          padding: 0.5rem 1rem;
+          background-color: #e50914;
+          border: none;
+          cursor: pointer;
+          color: white;
+          font-weight: bolder;
+          font-size: 1.05rem;
+        }
+      }
+      button {
+        padding: 0.5rem 1rem;
+        background-color: #e50914;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 0.2rem;
+        font-weight: bolder;
+        font-size: 1.05rem;
+      }
+    }
+  }
 
-}
+    
+  
+
+
 `;
