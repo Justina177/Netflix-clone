@@ -5,7 +5,15 @@ import BackgroundImage from '../Components/BackgroundImage';
 import Header from '../Components/Header';
 
 const Signup = () => {
-  const [showPassword, setShowPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSignIn = async () => {
+    console.log (formValues);
+  }
   return (
     <Container>
         <BackgroundImage />
@@ -24,22 +32,35 @@ const Signup = () => {
             <input
               type="email"
               placeholder="Email address"
-              name="email" />
+              name="email" 
+              value={(formValues.email)}
+              onChange={(e) =>
+                setFormValues({
+                  ...formValues,
+                  [e.target.name]: e.target.value,
+                })
+              }
+              />
               {showPassword && (
                 <input 
                   type="password"
                   placeholder="Password"
-                  name="password" />
+                  name="password" 
+                  value={(formValues.password)}
+                  onChange={(e) =>
+                    setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+              />
               )}
-              {/* <input type="password"
-              placeholder="Password"
-              name="password" /> */}
               {!showPassword &&  (
                 <button onClick={() => setShowPassword(true)}>Get Started</button>
-              )}
-              
+              )} 
             </div>
-            <button>Signup</button>
+            {/* <button>signin</button> */}
+            <button onClick={handleSignIn}>Signup</button>
         </div>
         </div>
     </Container>
